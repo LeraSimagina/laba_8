@@ -8,10 +8,14 @@ import com.leonchik.android.laba_8.Task
 
 @Dao
 interface TaskDao {
+
     @Query("SELECT * FROM task")
-    fun getTask(): MutableList<Task>
+    suspend fun getTask(): MutableList<Task>
+
     @Insert
-    fun addTask(task: Task)
+    suspend fun addTask(task: Task)
+
     @Delete
-    fun delTask(task: Task)
+    suspend fun delTask(task: Task)
+
 }
