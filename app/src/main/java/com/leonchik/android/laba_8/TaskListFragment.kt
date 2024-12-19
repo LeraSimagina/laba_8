@@ -93,6 +93,11 @@ class TaskListFragment : Fragment(R.layout.fragment_task_list){
         ItemTouchHelper(itemTouchHelper).attachToRecyclerView(recyclerView)
     }
 
+    override fun onResume() {
+        super.onResume()
+        taskListViewModel.getTasks()
+    }
+
     companion object
     {
         fun newInstance()=TaskListFragment()

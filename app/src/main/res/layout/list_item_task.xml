@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:textColor="@android:color/black"
+            android:textColor="#FF0099"
             android:textSize="18sp"/>
         <FrameLayout
             android:id="@+id/priorityCircle"
@@ -26,18 +26,20 @@
             android:layout_margin="5dp"
             android:background="@drawable/circle"
             android:gravity="center">
+
             <TextView
                 android:id="@+id/priorityNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="11sp" />
+                android:textColor="#FF0099"
+                android:textSize="11sp"
+                android:textStyle="bold" />
         </FrameLayout>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="#FF0099"/>
 </LinearLayout>

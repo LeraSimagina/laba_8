@@ -3,4 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragmentContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/icon_add"
+        android:backgroundTint="#FFAAD5"
+        android:contentDescription="@string/fab_add"
+        android:layout_margin="16dp" />
+</FrameLayout>

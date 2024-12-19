@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">laba_8</string>
+    <string name="task_description">Описание задачи</string>
+    <string name="priority_title">Приоритет</string>
+    <string name="low_priority">Низкий</string>
+    <string name="medium_priority">Средний</string>
+    <string name="high_priority">Высокий</string>
+    <string name="add_task">Добавить</string>
+    <string name="fab_add">Добавить задачу</string>
 </resources>
