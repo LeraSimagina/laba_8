@@ -9,7 +9,7 @@ import com.leonchik.android.laba_8.Task
 @Dao
 interface TaskDao {
 
-    @Query("SELECT * FROM task")
+    @Query("SELECT * FROM task ORDER BY priority ASC")
     suspend fun getTask(): MutableList<Task>
 
     @Insert

@@ -9,6 +9,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.leonchik.android.laba_8.database.TDLDatabase
@@ -30,17 +31,16 @@ class TaskListFragment : Fragment(R.layout.fragment_task_list){
         taskListViewModel.tasks.observe(viewLifecycleOwner){
                 tasks->adapter.updateTasks(tasks)
         }
+        taskListViewModel.getTasks()
+
+        swipeToDel()
     }
 
-    private inner class TaskHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    private inner class TaskHolder(view: View) : RecyclerView.ViewHolder(view) {
         private lateinit var task: Task
         private val task_content: TextView = itemView.findViewById(R.id.taskContent)
         private val task_circle: FrameLayout = itemView.findViewById(R.id.priorityCircle)
         private val task_num: TextView = itemView.findViewById(R.id.priorityNumber)
-
-        init {
-            itemView.setOnClickListener(this)
-        }
 
         fun bind(task: Task) {
             this.task = task
@@ -52,8 +52,7 @@ class TaskListFragment : Fragment(R.layout.fragment_task_list){
             }
             task_num.text = task.priority.toString()
         }
-        override fun onClick(v: View?) {
-        }
+
     }
 
     private inner class TaskAdapter(var tasks: MutableList<Task>) : RecyclerView.Adapter<TaskHolder>() {
@@ -71,6 +70,27 @@ class TaskListFragment : Fragment(R.layout.fragment_task_list){
             tasks.addAll(newTasks)
             notifyDataSetChanged()
         }
+    }
+
+    private fun swipeToDel()
+    {
+        val itemTouchHelper = object : ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT)
+        {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ) : Boolean {
+                return false
+            }
+            override  fun  onSwiped(viewHolder: RecyclerView.ViewHolder, direction:Int)
+            {
+                val position=viewHolder.adapterPosition
+                val taskToDel=adapter.tasks[position]
+                taskListViewModel.delTask(taskToDel)
+            }
+        }
+        ItemTouchHelper(itemTouchHelper).attachToRecyclerView(recyclerView)
     }
 
     companion object
