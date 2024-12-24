@@ -12,9 +12,9 @@ class TaskListViewModel (private val taskDao: TaskDao):ViewModel() {
     private val ts=MutableLiveData<List<Task>>()
     val tasks: LiveData<List<Task>> get() = ts
 
-    fun addTask(content:String,priority:Int)
+    fun addTask(content:String,data:String,priority:Int)
     {
-        val task=Task(content=content,priority=priority)
+        val task=Task(content=content,data=data, priority=priority)
         viewModelScope.launch{
             taskDao.addTask(task)
             getTasks()

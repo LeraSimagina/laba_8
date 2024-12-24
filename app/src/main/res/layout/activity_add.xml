@@ -13,6 +13,15 @@
         android:hint="@string/task_description"
         android:layout_margin="10dp"
         />
+
+    <EditText
+        android:id="@+id/data_task"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_margin="10dp"
+        android:hint="Дата"
+        android:textColor="#FF0099"
+        android:textColorHint="#FFAAD5" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

@@ -19,12 +19,13 @@ class AddActivity : AppCompatActivity() {
         taskDao = TDLDatabase.getDatabase(application).taskDao()
         findViewById<Button>(R.id.add_button).setOnClickListener {
             val content = findViewById<EditText>(R.id.contet_task).text.toString()
+            val data = findViewById<EditText>(R.id.data_task).text.toString()
             val priority = when (findViewById<RadioGroup>(R.id.priority_group).checkedRadioButtonId) {
                 R.id.high_priority -> 1
                 R.id.medium_priority -> 2
                 else -> 3
             }
-            val task = Task(content = content, priority = priority)
+            val task = Task(content = content, data=data,  priority = priority)
             AddTask(task)
             finish()
         }

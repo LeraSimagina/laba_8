@@ -39,16 +39,18 @@ class TaskListFragment : Fragment(R.layout.fragment_task_list){
     private inner class TaskHolder(view: View) : RecyclerView.ViewHolder(view) {
         private lateinit var task: Task
         private val task_content: TextView = itemView.findViewById(R.id.taskContent)
+        private val task_data: TextView = itemView.findViewById(R.id.taskData)
         private val task_circle: FrameLayout = itemView.findViewById(R.id.priorityCircle)
         private val task_num: TextView = itemView.findViewById(R.id.priorityNumber)
 
         fun bind(task: Task) {
             this.task = task
             task_content.text = task.content
+            task_data.text = task.data
             when (task.priority) {
-                1 -> task_circle.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#55FFAA"))
+                1 -> task_circle.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FF8080"))
                 2 -> task_circle.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFF80"))
-                3 -> task_circle.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FF8080"))
+                3 -> task_circle.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#55FFAA"))
             }
             task_num.text = task.priority.toString()
         }
